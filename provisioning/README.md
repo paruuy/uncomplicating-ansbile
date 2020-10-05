@@ -40,7 +40,7 @@ Com a informação gerada no arquivo hosts feito no ponto 4 e 5 das tarefas acim
 Exemplo de arquivo hosts:
 ![Image](https://github.com/paruuy/projects_images/blob/main/uncomplicating_ansible/provisioning_hosts_example.png)
 
-![Image](https://github.com/paruuy/projects_images/blob/main/uncomplicating_ansible/info_icon.png =40x40) Caso precisar executar novamente a tarefa do provisioning, será necessario deletar as IPs geradas para que sejam adicionada novas IPs uma vez de finalizada a execução desta tarefa.
+![Image](https://github.com/paruuy/projects_images/blob/main/uncomplicating_ansible/info_icon.png) Caso precisar executar novamente a tarefa do provisioning, será necessario deletar as IPs geradas para que sejam adicionada novas IPs uma vez de finalizada a execução desta tarefa.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
