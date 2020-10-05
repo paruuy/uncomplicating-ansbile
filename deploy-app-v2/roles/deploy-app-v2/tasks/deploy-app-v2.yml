@@ -1,0 +1,49 @@
+- name: Installing pip
+  shell: curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py && python2 get-pip.py
+  become: yes
+
+- name: Installing Kubernetes dependencies to use k8s module
+  pip:
+    name: 
+      - openshift 
+      - PyYAML
+
+- name: Copying app-v1 template deployment file # This task we created because we can do scale down after with this file
+  template:
+    src: app-v1.yml.j2
+    dest: /opt/giropops/app-v1.yml
+    owner: root
+    group: root
+    mode: 0644
+  register: copying_deployment_file_app_v1
+
+- name: Copying app-v2 template deployment file
+  template:
+    src: app-v2.yml.j2
+    dest: /opt/giropops/app-v2.yml
+    owner: root
+    group: root
+    mode: 0644
+  register: copying_deployment_file_app_v2
+
+- name: Deploy of app-v2
+  k8s:
+    state: present
+    namespace: default
+    src: /opt/giropops/app-v2.yml
+
+- name: Scale down of app-v1
+  k8s:
+    state: present
+    namespace: default
+    src: /opt/giropops/app-v1.yml
+
+- name: After 2 minutes the App app-v1 will be removed. Press control+c to cancel
+  pause:
+    minutes: 2
+
+- name: Removing app app-v1
+  k8s:
+    state: absent  
+    namespace: default  
+    src: /opt/giropops/app-v1.yml

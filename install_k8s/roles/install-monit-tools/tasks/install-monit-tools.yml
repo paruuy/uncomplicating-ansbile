@@ -1,0 +1,12 @@
+- name: Helm add repo
+  shell: helm repo add stable {{ url_repo_helm  }} # Var created in vars folder (main.yml)
+  register: prometheus_add_repo
+
+- name: helm update
+  shell: helm repo update
+  register: prometheus_repo_update
+
+- name: Intalling Prometheus Operator
+  shell: helm install {{ deploy_prometheus  }} # Var created in vars folder
+  register: prometheus_install
+

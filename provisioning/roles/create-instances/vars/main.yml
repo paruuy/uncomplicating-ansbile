@@ -1,0 +1,9 @@
+---
+# vars file for create-instances
+instance_type: t2.medium
+sec_group_name: giropops
+image: ami-0c960b947cbb2dd16
+keypair: ansible-class
+region: eu-central-1
+count: 3
+profile: giropops #Name of profile located in local machina .aws/credentials file

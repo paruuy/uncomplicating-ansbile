@@ -1,0 +1,23 @@
+- name: Installing Docker (using ansible shell module)
+  shell: curl -fsSL https://get.docker.com | bash
+  notify: Restart Docker
+
+- name: Adding apt repositories keys of k8s
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+
+- name: Adding k8s repositorie
+  apt_repository:
+    repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+
+- name: Installing pakcages kubeadm, kubelet and kubectl
+  apt:
+    name: "{{ packages }}" #Package Var created below
+  vars:
+    packages:
+    - kubelet
+    - kubeadm
+    - kubectl
+  notify: Restart Kubelet
