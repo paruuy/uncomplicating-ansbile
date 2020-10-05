@@ -1,6 +1,6 @@
 # Provisioning
 
-Esta e a primeira parte de nosso percurso e iremos a criar todo o necessario para ter nossas maquinas Linux na AWS para criar nosso cluster kubernetes.
+Primeira tarefa a ser realizada. Nesta tarefa iremos as maquinas Linux na AWS e realizar algumas configurações para logo poder começar a configurar kubernetes na seguinte tarefa.
 
 Para isso vamos precisar 3 maquinas Linux Ubuntu 20.04.
 
@@ -30,6 +30,10 @@ Esta instalação irá executar o role create-instances que irá executar uma se
 
 ## Result
 O provisioning irá criar as 3 instancias do EC2 na AWS e o ansible ira adicionar as IPs no arquivo [provisioning/hosts](https://github.com/paruuy/uncomplicating-ansbile/blob/main/provisioning/hosts)
+
+Para verificar que as instancias foram criadas podem ir na console da AWS Services/EC2/Instances e verificar que existam 3 instancias.
+
+![Image](https://github.com/paruuy/projects_images/blob/main/uncomplicating_ansible/provisioning-ec2-list.png)
 
 Com a informação gerada no arquivo hosts iremos a realizar o seguinte passo que será a instalação do kubernetes. [install-k8s](https://github.com/paruuy/uncomplicating-ansbile/blob/main/install-k8s)
 
