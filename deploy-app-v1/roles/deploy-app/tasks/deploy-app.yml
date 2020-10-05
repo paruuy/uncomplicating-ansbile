@@ -1,5 +1,7 @@
 - name: Creating directory of giropops app
-  file: path={{ item }} state=directory
+  file: 
+    path: "{{ item }}" 
+    state: directory
   with_items:
     - /opt/giropops
     - /opt/giropops/logs
@@ -24,16 +26,10 @@
   register: copying_service_file
 
 - name: Creating the deployment file  of Giropops app
-  k8s: 
-    state: present
-    namespace: default
-    src: /opt/giropops/app-v1.yml
+  shell: kubectl apply -f /opt/giropops/app-v1.yml
   register: deploy_app
 
 - name: Creating the service file of Giropops app
-  k8s:
-    state: present
-    namespace: default 
-    src: /opt/giropops/service_app.yml
+  shell: kubectl apply -f /opt/giropops/service_app.yml
   register: deploy_svc_app
 
