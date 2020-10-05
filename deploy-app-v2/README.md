@@ -1,7 +1,7 @@
 Deploy app v2
 =========
 
-A brief description of the role goes here.
+Nesta fase iremos a realizar um novo deploy de uma app v2, criando 10 instancias e também faremos o scale down da app v1 deixando a app-v1 com uma instancia durante 2 minutos e depois desse tempo eliminaremos a app-v1 ficando somente a app-v2
 
 Requirements
 ------------
