@@ -1,38 +1,48 @@
-Role Name
+Install K8S
 =========
 
-A brief description of the role goes here.
+Nesta tarefa a realizar a instalação de kubernetes nas maquinas criadas no provisioning.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+1. Ter realizado a execução do playbook da tarefa provisioning.
+```
+cd provisioning
+ansible-playbook -i hosts main.yml
+```
 
-Role Variables
+2. Ter preenchido o arquivo install-k8s/hosts com as IPs das instancias que foram criadas no provisioning desta forma:
+
+![Image](https://github.com/paruuy/projects_images/blob/main/uncomplicating_ansible/install-k8s-hosts.png) 
+
+
+Installation
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Nesta parte iremos dividir nossa tarefa em 5 roles. A ordem delas e a seguinte:
 
-Dependencies
+1. Install-k8s => Instalação de docker, kubeadm, kubelet and kubectl. Neste role utilizaremos tambem handlers para reiniciar os servicos quando .
+2. Create-cluster => Configuração do cluster kubernetes (asociar master com workers, configuração de certificados e token)
+3. join-workers => Realiza a asociação das duas instancias que serao utilizadas como workers com a instancia master.
+4. install-helm => Instalação do Helm conforme a documentação de instalação via scripts: [helm](https://helm.sh/docs/intro/install/)
+5. install-monit-tools =>
+
+```
+cd install-k8s
+ansible-playbook -i hosts main.yml
+```
+
+Result
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+O resultado obtido nesta tarefa e a instalação e configuração do cluster kubernetes una instancia para o master e dois para os workers. 
 
-Example Playbook
+Alem disso iremos instalar o helm chart e o prometheus operator para monitorizar nosso cluster.
+
+Next step
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Até agora já temos o kubernetes instalado e configurado, alem de ter o helms e o promehteus operator para monitorizar nosso cluster kubernetes.
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
-
-License
--------
-
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+O proximo passo será realizar um deploy de uma aplicação simples no kubernetes

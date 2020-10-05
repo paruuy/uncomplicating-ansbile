@@ -1,9 +1,7 @@
-- name:
-  debug:
+- debug:
     msg: "[WORKER] K8S_TOKEN_HOLDER - The token is {{ hostvars['K8S_TOKEN_HOLDER']['token'] }}"
 
-- name:  
-  debug:
+- debug:
     msg: "[WORKER] K8S_TOKEN_HOLDER - The CA Hash is {{ hostvars['K8S_TOKEN_HOLDER']['hash'] }}"
 
 - name: Removing cluster (if exist)

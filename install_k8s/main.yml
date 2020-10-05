@@ -3,10 +3,11 @@
   user: ubuntu
   gather_facts: no
   pre_tasks:
-  - name: 'Atualizando o repo'
-    raw: 'apt-get update'
   - name: 'Instalando o python'
-    raw: 'apt-get install -y python'
+    apt: 
+     name: python
+     state: present
+     update_cache: yes
   roles: 
   - { role: install-k8s, tags: ["install_k8s_role"] }
   

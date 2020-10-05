@@ -16,16 +16,24 @@
   register: copying_template
 
 - name: Copying app service file to host
-  copy: src={{ item.src }} dest={{ item.dest  }}
+  copy: 
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
   with_items:
     - { src: 'service_app.yml', dest: '/opt/giropops/service_app.yml' }
   register: copying_service_file
 
 - name: Creating the deployment file  of Giropops app
-  shell: kubectl apply -f /opt/giropops/app-v1.yml
+  k8s: 
+    state: present
+    namespace: default
+    src: /opt/giropops/app-v1.yml
   register: deploy_app
 
 - name: Creating the service file of Giropops app
-  shell: kubectl apply -f /opt/giropops/service_app.yml
+  k8s:
+    state: present
+    namespace: default 
+    src: /opt/giropops/service_app.yml
   register: deploy_svc_app
 
