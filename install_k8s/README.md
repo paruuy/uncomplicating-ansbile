@@ -44,8 +44,10 @@ Para validar que tudo ficou configurado, podemos entrar via ssh no cluster kuber
 
 ![Image](https://github.com/paruuy/projects_images/blob/main/uncomplicating_ansible/kubectl-command-example.png)
 
-Alem disso iremos instalar o helm e o prometheus operator para monitorizar nosso cluster.
+Também ficou instalado o helm e o prometheus operator para monitorizar nosso cluster.
+
 Para verificar que foi instalado o prometheus operator podemos verificar nos pods:
+
 ![Image](https://github.com/paruuy/projects_images/blob/main/uncomplicating_ansible/helm-prometheus-operator-example.png)
 
 Next step
