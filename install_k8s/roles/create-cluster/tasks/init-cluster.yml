@@ -37,10 +37,8 @@
     token: "{{ k8s_token.stdout  }}" # using the register k8s_token result
     hash: "{{ k8s_master_ca_hash.stdout  }}"
 
-- name: 
-  debug:
+- debug:
     msg: "[MASTER] K8S_TOKEN_HOLDER - The token is: {{ hostvars['K8S_TOKEN_HOLDER']['token'] }}"
 
-- name:
-  debug:
+- debug:
     msg: "[MASTER] K8S_TOKEN_HOLDER - The CA Hash is: {{ hostvars['K8S_TOKEN_HOLDER']['hash'] }}"
