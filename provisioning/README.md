@@ -43,4 +43,4 @@ Exemplo de arquivo hosts:
 ![Image](https://github.com/paruuy/projects_images/blob/main/uncomplicating_ansible/info_icon.png) Caso precisar executar novamente a tarefa do provisioning, será necessario deletar as IPs geradas para que sejam adicionada novas IPs uma vez de finalizada a execução desta tarefa.
 
 ## Next step
-O proximo passo que devemos executar é o: [install-k8s](https://github.com/paruuy/uncomplicating-ansbile/blob/main/install-k8s)
+O proximo passo que devemos executar é o: [install-k8s](https://github.com/paruuy/uncomplicating-ansbile/tree/main/install_k8s)
